@@ -35,15 +35,26 @@ public class Driver {
                 .build();
 
 
+        listFilesInBucket(s3client);
 
+        putFilesInBucket(s3client);
+
+//        deleteFilesInBucket(s3client);
+
+    }
+
+    private static void deleteFilesInBucket(AmazonS3 s3client) {
+        s3client.deleteObject(bucketName,"hello.txt");
+    }
+
+    private static void putFilesInBucket(AmazonS3 s3client) {
+        s3client.putObject(bucketName, "hello.txt", new File("./images/hello.txt"));
+    }
+
+    private static void listFilesInBucket(AmazonS3 s3client) {
         S3Objects.inBucket(s3client, bucketName).forEach((S3ObjectSummary objectSummary) -> {
-            // TODO: Consume `objectSummary` the way you need
             System.out.println(objectSummary.getKey());
         });
-        s3client.putObject(bucketName, "hello.txt", new File("./images/hello.txt"));
-
-//        s3client.deleteObject(bucketName,"hello.txt"); //How to delete an object
-
     }
 
 
