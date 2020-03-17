@@ -5,6 +5,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.iterable.S3Objects;
 import com.amazonaws.services.s3.model.Bucket;
+import com.amazonaws.services.s3.model.DeleteObjectsRequest;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 
 import java.io.File;
@@ -37,9 +38,10 @@ public class Driver {
 
         listFilesInBucket(s3client);
 
-        putFilesInBucket(s3client);
+//        putFilesInBucket(s3client);
 
 //        deleteFilesInBucket(s3client);
+//        deleteMutipleFilesInBucket(s3client);
 
     }
 
@@ -57,5 +59,15 @@ public class Driver {
         });
     }
 
+    private static void deleteMutipleFilesInBucket(AmazonS3 s3client) {
+
+        String objkeyArr[] = {
+                "hello.txt",
+                "VPCDiagram.jpg"
+        };
+        DeleteObjectsRequest delObjReq = new DeleteObjectsRequest(bucketName)
+                .withKeys(objkeyArr);
+        s3client.deleteObjects(delObjReq);
+    }
 
 }
