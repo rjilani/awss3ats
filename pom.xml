@@ -11,7 +11,7 @@
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
-        <itext.version>7.0.2</itext.version>
+        <itext.version>7.2.0</itext.version>
         <slf4japi.version>1.7.28</slf4japi.version>
         <slf4jlog4j.version>1.7.28</slf4jlog4j.version>
         <junit.version>4.12</junit.version>
